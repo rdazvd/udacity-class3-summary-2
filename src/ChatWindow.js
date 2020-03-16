@@ -7,7 +7,7 @@ import MessageHistory from './MessageHistory';
 class ChatWindow extends React.Component {
   onMessage = message => {
     const { onMessage, user } = this.props;
-    onMessage(user, message);
+    onMessage(user.username, message);
   };
 
   render() {

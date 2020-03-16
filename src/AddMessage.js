@@ -11,8 +11,8 @@ class AddMessage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    
-    const { onMessage, message } = this.props;
+    const { onMessage } = this.props;
+    const { message } = this.state;
     onMessage(message);
   };
 
@@ -32,10 +32,18 @@ class AddMessage extends React.Component {
 			onChange={this.handleInputChange}
 		  />
 		  <div className="input-group-append">
-			<button className=""></button>
+			<button className="btn submit-button" disabled={this.isDisabled()}>
+			  SEND
+			</button>
 		  </div>
 		</form>
       </div>
     );
   }
 }
+
+AddMessage.propTypes = {
+  onMessage: PropTypes.func.isRequired
+};
+
+export default AddMessage;

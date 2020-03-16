@@ -5,24 +5,18 @@ import ChatWindow from './ChatWindow';
 
 const users = [{ username: 'Amy' }, { username: 'John' }];
 
-const messages = [
-  { username: 'Amy', text: 'Hi, Jon!' },
-  { username: 'Amy', text: 'How are you?' },
-  { username: 'John', text: 'Hi, Amy! Good, you?' },
-];
-
 class App extends Component {
   state = {
     messages: []
   };
 
-  onNewMessage = (username, message) => {
+  onNewMessage = (username, text) => {
     const newMessage = {
-      ['username']: username,
-      ['text']: message
+      username,
+      text
     };
     this.setState(currentState => ({
-      messages: currentState.messages.concat([newMessage]);
+      messages: currentState.messages.concat([newMessage])
     }));
   };
 
@@ -44,7 +38,7 @@ class App extends Component {
               key={user.username}
               user={user}
               messages={messages}
-              onMessage={this.onMessage}
+              onMessage={this.onNewMessage}
             />
           ))}
         </div>
